@@ -57,10 +57,15 @@ section{padding:80px 0;position:relative}
 .navbar{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;background:transparent;transition:all .3s ease}
 .navbar.scrolled{background:rgba(11,31,51,.97);backdrop-filter:blur(10px);padding:12px 0}
 .nav-wrap{display:flex;align-items:center;justify-content:space-between}
-.logo{display:flex;align-items:center;color:#fff}
-.logo img{height:54px;width:auto;display:block;filter:brightness(0) invert(1)}
-.navbar.scrolled .logo img{height:44px;transition:height .3s ease}
-.footer .logo img{height:60px;opacity:.92}
+.logo{display:flex;align-items:center;gap:14px;color:#fff}
+.logo img{height:48px;width:auto;display:block;transition:height .3s ease}
+.navbar.scrolled .logo img{height:40px}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-text strong{font-family:var(--serif);font-size:1.2rem;font-weight:600;color:#fff;letter-spacing:.01em}
+.logo-text span{font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--dourado);margin-top:3px;font-weight:500}
+.footer .logo img{height:54px}
+.footer .logo-text strong{color:#fff;font-size:1.15rem}
+.footer .logo-text span{color:var(--dourado)}
 .nav-links{display:flex;align-items:center;gap:30px}
 .nav-links a{color:#fff;font-size:.85rem;font-weight:500}
 .nav-links a:hover{color:var(--dourado)}
@@ -68,18 +73,20 @@ section{padding:80px 0;position:relative}
 .menu-toggle{display:none;color:#fff;font-size:1.6rem}
 
 .hero{min-height:88vh;display:flex;align-items:center;background:linear-gradient(135deg,rgba(11,31,51,.94),rgba(18,57,91,.88)),url('https://images.unsplash.com/photo-1448630360428-65456885c650?w=1920&fit=crop') center/cover;color:#fff;padding:130px 0 80px}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
 .hero h1{color:#fff;margin-bottom:24px}
 .hero h1 .gold{color:var(--dourado);font-style:italic}
 .hero-sub{font-size:1.08rem;color:#cdd5e0;margin-bottom:32px;line-height:1.7;font-weight:300}
 .hero-sub strong{color:#fff;font-weight:600}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-.hero-card{background:rgba(255,255,255,.04);backdrop-filter:blur(14px);border:1px solid rgba(200,169,107,.25);padding:36px 32px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.hero-card-badge{display:inline-block;padding:5px 12px;background:rgba(200,169,107,.15);color:var(--dourado);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:18px;border:1px solid rgba(200,169,107,.3)}
-.hero-card h3{color:#fff;font-size:1.3rem;margin-bottom:12px}
-.hero-card p{color:#a8b3c4;font-size:.92rem;margin-bottom:22px;line-height:1.65}
-.hero-card .btn{width:100%;padding:16px;font-size:.88rem}
-.hero-card .lgpd{font-size:.7rem;color:#7a8499;text-align:center;margin-top:12px;line-height:1.5}
+.hero-meta{margin-top:18px;font-size:.78rem;color:#a8b3c4;letter-spacing:.04em}
+.hero-photo{position:relative}
+.hero-photo-wrap{position:relative;max-width:420px;margin-left:auto}
+.hero-photo-wrap::before{content:"";position:absolute;top:-18px;left:-18px;right:34px;bottom:-18px;border:1.5px solid var(--dourado);z-index:0;pointer-events:none}
+.hero-photo-wrap img{position:relative;z-index:1;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;box-shadow:0 25px 60px rgba(0,0,0,.55);display:block}
+.hero-photo-badge{position:absolute;z-index:2;bottom:-22px;left:24px;right:24px;background:linear-gradient(135deg,#0B1F33 0%,#12395B 100%);padding:14px 22px;text-align:center;border:1px solid rgba(200,169,107,.5);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+.hero-photo-badge strong{font-family:var(--serif);font-size:1.15rem;color:var(--dourado);display:block;line-height:1;margin-bottom:4px}
+.hero-photo-badge span{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#cdd5e0;font-weight:500}
 
 .dores{background:#fff}
 .dores-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
@@ -239,7 +246,8 @@ section{padding:80px 0;position:relative}
 <header class="navbar" id="navbar">
   <div class="container nav-wrap">
     <a href="#" class="logo" aria-label="Ramos Advocacia Especializada">
-      <img src="assets/logo-ramos-branca.png" alt="Ramos Advocacia Especializada" />
+      <img src="assets/logo-mark.png" alt="" />
+      <div class="logo-text"><strong>Ramos Advocacia</strong><span>Especializada</span></div>
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#dores">Sua Situação</a>
@@ -264,16 +272,16 @@ section{padding:80px 0;position:relative}
           Falar Agora pelo WhatsApp
         </a>
       </div>
+      <p class="hero-meta">Atendimento direto pelo titular &middot; Sigilo profissional &middot; Sem formulário</p>
     </div>
-    <div class="hero-card reveal" id="contato">
-      <span class="hero-card-badge">Atendimento Direto</span>
-      <h3>Conversa direta comigo</h3>
-      <p>Sem formulário, sem secretária. Você conta sua situação e eu digo o que dá para fazer.</p>
-      <a href="https://wa.me/5574988265071?text=Ol%C3%A1%2C%20vim%20pela%20p%C3%A1gina%20e%20preciso%20de%20ajuda%20sobre%20d%C3%ADvida%20banc%C3%A1ria%20empresarial." class="btn btn-wa" target="_blank" rel="noopener" data-wa-cta="hero-card">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0012.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.39-1.67a11.84 11.84 0 005.65 1.44h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.45z"/></svg>
-        Falar Agora
-      </a>
-      <p class="lgpd">Sigilo profissional · LGPD · Atendimento pelo titular</p>
+    <div class="hero-photo reveal" id="contato">
+      <div class="hero-photo-wrap">
+        <img src="assets/junior-ramos-titular.jpg" alt="Junior Ramos · OAB/BA 47.806" loading="eager" />
+        <div class="hero-photo-badge">
+          <strong>Junior Ramos</strong>
+          <span>Advogado · OAB/BA 47.806</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -479,7 +487,8 @@ section{padding:80px 0;position:relative}
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo">
-          <img src="assets/logo-ramos-branca.png" alt="Ramos Advocacia Especializada" />
+          <img src="assets/logo-mark.png" alt="" />
+          <div class="logo-text"><strong>Ramos Advocacia</strong><span>Especializada</span></div>
         </div>
         <p>Defesa técnica do empresário endividado: execução bancária e gestão do passivo.</p>
         <div class="footer-selos">
